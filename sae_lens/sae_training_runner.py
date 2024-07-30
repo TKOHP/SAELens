@@ -148,8 +148,9 @@ class SAETrainingRunner:
 
             # train SAE
             sae = trainer.fit()
-            sae = torch.nn.DataParallel(sae)
-            sae.cuda()
+            # 多GPU
+            # sae = torch.nn.DataParallel(sae)
+            # sae.cuda()
 
         except (KeyboardInterrupt, InterruptedException):
             print("interrupted, saving progress")
