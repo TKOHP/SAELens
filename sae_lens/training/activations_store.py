@@ -151,12 +151,12 @@ class ActivationsStore:
         if model_kwargs is None:
             model_kwargs = {}
         self.model_kwargs = model_kwargs
-        file_path="hf://datasets/Duxiaoman-DI/FinCorpus/**/fin_articles_data.jsonl.gz"
+        # file_path="hf://datasets/Duxiaoman-DI/FinCorpus/**/fin_articles_data.jsonl.gz"
         self.dataset = (
             load_dataset(
                 dataset,
                 split="train",
-                data_files={ 'train': file_path },
+                # data_files={ 'train': file_path },
                 streaming=streaming,
                 trust_remote_code=dataset_trust_remote_code,  # type: ignore
             )
