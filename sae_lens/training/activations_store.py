@@ -612,21 +612,21 @@ class ActivationsStore:
                 )
 
         # 1. # create new buffer by mixing stored and new buffer
-        mixing_buffer = torch.cat(
-            [new_samples, self.storage_buffer],
-            dim=0,
-        )
+        # mixing_buffer = torch.cat(
+        #     [new_samples, self.storage_buffer],
+        #     dim=0,
+        # )
 
-        mixing_buffer = mixing_buffer[torch.randperm(mixing_buffer.shape[0])]
+        # mixing_buffer = mixing_buffer[torch.randperm(mixing_buffer.shape[0])]
 
         # 2.  put 50 % in storage
-        self._storage_buffer = mixing_buffer[: mixing_buffer.shape[0] // 2]
+        # self._storage_buffer = mixing_buffer[: mixing_buffer.shape[0] // 2]
 
         # 3. put other 50 % in a dataloader
         dataloader = iter(
             DataLoader(
                 # TODO: seems like a typing bug?
-                cast(Any, mixing_buffer[mixing_buffer.shape[0] // 2 :]),
+                cast(Any, new_samples),
                 batch_size=batch_size,
                 shuffle=True,
             )
