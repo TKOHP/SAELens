@@ -1,53 +1,12 @@
-<img width="1308" alt="Screenshot 2024-03-21 at 3 08 28 pm" src="https://github.com/jbloomAus/mats_sae_training/assets/69127271/209012ec-a779-4036-b4be-7b7739ea87f6">
-
-# SAE Lens 
-[![PyPI](https://img.shields.io/pypi/v/sae-lens?color=blue)](https://pypi.org/project/sae-lens/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![build](https://github.com/jbloomAus/SAELens/actions/workflows/build.yml/badge.svg)](https://github.com/jbloomAus/SAELens/actions/workflows/build.yml)
-[![Deploy Docs](https://github.com/jbloomAus/SAELens/actions/workflows/deploy_docs.yml/badge.svg)](https://github.com/jbloomAus/SAELens/actions/workflows/deploy_docs.yml)
-[![codecov](https://codecov.io/gh/jbloomAus/SAELens/graph/badge.svg?token=N83NGH8CGE)](https://codecov.io/gh/jbloomAus/SAELens)
-
-SAELens exists to help researchers:
-- Train sparse autoencoders.
-- Analyse sparse autoencoders / research mechanistic interpretability. 
-- Generate insights which make it easier to create safe and aligned AI systems.
-
-Please refer to the [documentation](https://jbloomaus.github.io/SAELens/) for information on how to:
-- Download and Analyse pre-trained sparse autoencoders. 
-- Train your own sparse autoencoders.
-- Generate feature dashboards with the [SAE-Vis Library](https://github.com/callummcdougall/sae_vis/tree/main).
-
-SAE Lens is the result of many contributors working collectively to improve humanities understanding of neural networks, many of whom are motivated by a desire to [safeguard humanity from risks posed by artificial intelligence](https://80000hours.org/problem-profiles/artificial-intelligence/).
-
-This library is maintained by [Joseph Bloom](https://www.jbloomaus.com/) and [David Chanin](https://github.com/chanind).
-
-## Loading Pre-trained SAEs. 
-
-Pre-trained SAEs for various models can be imported via SAE Lens. See this [page](https://jbloomaus.github.io/SAELens/sae_table/) in the readme for a list of all SAEs.
-## Tutorials
-
-- [Loading and Analysing Pre-Trained Sparse Autoencoders](tutorials/basic_loading_and_analysing.ipynb)
- [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://githubtocolab.com/jbloomAus/SAELens/blob/main/tutorials/basic_loading_and_analysing.ipynb)
- - [Understanding SAE Features with the Logit Lens](tutorials/logits_lens_with_features.ipynb)
- [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://githubtocolab.com/jbloomAus/SAELens/blob/main/tutorials/logits_lens_with_features.ipynb)
-  - [Training a Sparse Autoencoder](tutorials/training_a_sparse_autoencoder.ipynb)
- [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://githubtocolab.com/jbloomAus/SAELens/blob/main/tutorials/training_a_sparse_autoencoder.ipynb)
-
-
-## Join the Slack!
-
-Feel free to join the [Open Source Mechanistic Interpretability Slack](https://join.slack.com/t/opensourcemechanistic/shared_invite/zt-2k0id7mv8-CsIgPLmmHd03RPJmLUcapw) for support!
-
-
-## Citation
-
-Please cite the package as follows:
-
-```
-@misc{bloom2024saetrainingcodebase,
-   title = {SAELens
-   author = {Joseph Bloom, David Chanin},
-   year = {2024},
-   howpublished = {\url{https://github.com/jbloomAus/SAELens}}
-}}
-```
+# 主要类以及其修改部分
+## sae_lens/training/activations_store.py
+用于激活值采样和存取
+### get_data_loader()
+注释其中的在线shuffle功能
+## sae_lens/cache_activations_runner.py
+运行激活值采样的代码
+### __init__
+添加了多gpu运行大模型
+## sae_lens/load_model.py
+### load_model()
+添加对金融大模型的运行 ,即添加对model_class_name="LlamaForCausalLM"的判断
